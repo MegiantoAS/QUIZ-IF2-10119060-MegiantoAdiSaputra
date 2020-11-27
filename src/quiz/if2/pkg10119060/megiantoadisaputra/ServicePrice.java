@@ -13,66 +13,80 @@ package quiz.if2.pkg10119060.megiantoadisaputra;
  NIM          : 10119060
  Deskripsi    : Program UTS 
  */
-public class ServicePrice implements ServiceItem {
-    private float harga;
-    private float priceservice;
-    private float discount;
+public class ServicePrice implements ServiceItem
+{
+    private float priceService, discount;
 
-    public float getPriceservice() {
-        return priceservice;
+    public float getPriceService() 
+    {
+        return priceService;
     }
 
-    public void setPriceservice(float priceservice) {
-        this.priceservice = priceservice;
+    public void setPriceService(float priceService) 
+    {
+        this.priceService = priceService;
     }
     
-    @Override
-    public void displayService(){
-        System.out.println("#*****************************************#");
-        System.out.println("#****Rock n Roll HairCut****");
-        System.out.println("#****Service List****");
-        System.out.println("#1. Haircut : IDR 45");
-        System.out.println("#2. Haircut + hair wash : IDR 55");
-        System.out.println("#3. HaiWash only : IDR 15");
-        System.out.println("#1. Haircut : IDR 45");
-        System.out.println("#*****************************************#");
-        System.out.println("#choose 1/2/3");
+    public void displayService()
+    {
+        System.out.println("#*********#");
+        System.out.println("#**Rock n Roll Haircut**#");
+        System.out.println("#**Service List***#");
+        System.out.println("1. Haircut : IDR 45K");
+        System.out.println("2. Haircut + Hairwash: IDR 55K");
+        System.out.println("3. Hairwash Only : IDR 15K");
+        System.out.println("#*********#");
+        System.out.print("Choose (1/2/3): ");
     }
     
-    @Override
-    public float getPrice(int serviceItem){
-        switch (serviceItem){
-            case 1:
-                harga = 45;
-                break;
-            case 2:
-                harga = 55;
-                break;
-            case 3:
-                harga = 15;
-                break;
-            default:
-                break; 
+    public float getPrice(int serviceItem)
+    {
+        if(serviceItem == 1)
+        {
+            return 45000;
         }
-        return harga;
+        else if(serviceItem == 2)
+        {
+            return 55000;
+        }
+        else if(serviceItem == 3)
+        {
+            return 15000;
+        }
+        else
+        {
+            return 0;
+        }
     }
     
-    public boolean checkMemberStatus(String StatusMember){
-       boolean status;
-       status = "yes".equals(StatusMember) || "yes".equals(StatusMember);
-       return status;
-    }
-    
-    @Override
-    public float getSale(boolean inMember, float parServicePrice){
-        return 0;
+    public boolean checkMemberStatus(String statusMember)
+    {
+        statusMember.toLowerCase();
         
+        if(statusMember.equals("yes"))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
     
-    public float getTotalPay(float priceService, float discount){
-        return 0;
-        
+    public float getSale(boolean isMember, float parServicePrice)
+    {
+        if(isMember)
+        {
+            return (float) (parServicePrice * 0.1);
+        }
+        else
+        {
+            return 0;
+        }
+    }
+    
+    public float getTotalPay(float priceService, float discount)
+    {
+        return priceService - discount;
     }
 }
-    
-

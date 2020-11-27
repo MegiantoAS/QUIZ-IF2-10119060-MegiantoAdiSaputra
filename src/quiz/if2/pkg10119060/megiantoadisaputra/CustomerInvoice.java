@@ -14,6 +14,7 @@ package quiz.if2.pkg10119060.megiantoadisaputra;
  Deskripsi    : Program UTS 
  */
 public interface CustomerInvoice {
+    
     public String currentTime();
     
 }

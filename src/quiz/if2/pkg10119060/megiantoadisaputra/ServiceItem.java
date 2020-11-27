@@ -13,7 +13,8 @@ package quiz.if2.pkg10119060.megiantoadisaputra;
  NIM          : 10119060
  Deskripsi    : Program UTS 
  */
-public interface ServiceItem {
+public interface ServiceItem 
+{
     public void displayService();
     public float getPrice(int serviceItem);
     public boolean checkMemberStatus(String statusMember);

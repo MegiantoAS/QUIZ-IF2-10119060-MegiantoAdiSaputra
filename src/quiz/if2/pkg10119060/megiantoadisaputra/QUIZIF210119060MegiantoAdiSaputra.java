@@ -5,6 +5,8 @@
  */
 package quiz.if2.pkg10119060.megiantoadisaputra;
 
+import java.util.Scanner;
+
 /**
  *
  * @author asus
@@ -18,18 +20,40 @@ public class QUIZIF210119060MegiantoAdiSaputra {
  NIM          : 10119060
  Deskripsi    : Program UTS 
      */
-    public static void main(String[] args) {
-        // TODO code application logic here
-      System.out.println("#*****************************************#");
-        System.out.println("#****Rock n Roll HairCut****");
-        System.out.println("#****Service List****");
-        System.out.println("#1. Haircut : IDR 45");
-        System.out.println("#2. Haircut + hair wash : IDR 55");
-        System.out.println("#3. HaiWash only : IDR 15");
-        System.out.println("#1. Haircut : IDR 45");
-        System.out.println("#*****************************************#");
-        System.out.println("#choose 1/2/3");
-      
+   public static void main(String[] args) {
+        int serviceItem;
+        boolean isMember;
+        float price, discount;
+        
+        Scanner scanner = new Scanner(System.in);
+        ServicePrice sp = new ServicePrice();
+        Customer cst    = new Customer();
+        
+        System.out.println("====Program Kasir Rock n Roll Haircut====");
+        System.out.print("Customer Name \t : ");
+        cst.setNama(scanner.next());
+        System.out.print("Customer Email \t : ");
+        cst.setEmail(scanner.next());
+        
+        sp.displayService();
+        serviceItem = scanner.nextInt();
+        sp.setPriceService(sp.getPrice(serviceItem));
+        
+        System.out.print("Are you Member (yes/no) : ");
+        isMember = sp.checkMemberStatus(scanner.next());
+        
+         //DISKON
+        discount = sp.getSale(isMember, sp.getPriceService());
+   
+                    System.out.println("\n");
+                    System.out.println("#**********#");
+                    System.out.println("#**********#");
+                    System.out.println("Date Transaction : " + cst.currentTime());
+                    System.out.println("Service Price : " + sp.getPriceService());
+                    System.out.println("Discount : " + discount);
+                    System.out.println("Total Pay : " + sp.getTotalPay(sp.getPriceService(), discount));
     }
     
 }
+      
+  
